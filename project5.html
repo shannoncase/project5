@@ -67,6 +67,8 @@ var total_reward = 0.000;
 
 var _interval = null;
 
+var mediator = true;
+
 var myInterval = setInterval(function(){
     $.ajax({
             url:"https://codingthecrowd.com/counter.php",
@@ -84,6 +86,7 @@ var myInterval = setInterval(function(){
 
         var tmpaveragePosition = all/allinputs.length;
         console.log(averagePosition);
+        if(mediator){
         if(tmpaveragePosition > 0.4 && tmpaveragePosition <= 1.0){
             averagePosition = 1;
         }else if(tmpaveragePosition > 1.4 && tmpaveragePosition <= 2.0){
@@ -94,6 +97,19 @@ var myInterval = setInterval(function(){
             averagePosition = 4;
         }else if(tmpaveragePosition > 4.4 && tmpaveragePosition <= 5.0){
             averagePosition = 5;
+        }
+        }else{
+            if(tmpaveragePosition > 0 && tmpaveragePosition < 0.6){
+            averagePosition = 0;
+        }else if(tmpaveragePosition > 1 && tmpaveragePosition < 1.6){
+            averagePosition = 1;
+        }else if(tmpaveragePosition > 2 && tmpaveragePosition < 2.6){
+            averagePosition = 2;
+        }else if(tmpaveragePosition > 3 && tmpaveragePosition < 3.6){
+            averagePosition = 3;
+        }else if(tmpaveragePosition > 4 && tmpaveragePosition < 4.6){
+            averagePosition = 4;
+        }
         }
 
        }).fail(function(jqxhr, textStatus, error) {
@@ -122,7 +138,33 @@ $(document).ready(function() {
             all += allinputs[i].data;
         }
 
-        var averagePosition = all/allinputs.length;
+
+        var tmpaveragePosition = all/allinputs.length;
+        if(mediator){
+        if(tmpaveragePosition > 0.4 && tmpaveragePosition <= 1.0){
+            averagePosition = 1;
+        }else if(tmpaveragePosition > 1.4 && tmpaveragePosition <= 2.0){
+            averagePosition = 2;
+        }else if(tmpaveragePosition > 2.4 && tmpaveragePosition <= 3.0){
+            averagePosition = 3;
+        }else if(tmpaveragePosition > 3.4 && tmpaveragePosition <= 4.0){
+            averagePosition = 4;
+        }else if(tmpaveragePosition > 4.4 && tmpaveragePosition <= 5.0){
+            averagePosition = 5;
+        }
+        }else{
+            if(tmpaveragePosition > 0 && tmpaveragePosition < 0.6){
+            averagePosition = 0;
+        }else if(tmpaveragePosition > 1 && tmpaveragePosition < 1.6){
+            averagePosition = 1;
+        }else if(tmpaveragePosition > 2 && tmpaveragePosition < 2.6){
+            averagePosition = 2;
+        }else if(tmpaveragePosition > 3 && tmpaveragePosition < 3.6){
+            averagePosition = 3;
+        }else if(tmpaveragePosition > 4 && tmpaveragePosition < 4.6){
+            averagePosition = 4;
+        }
+        }
         console.log(averagePosition);
 
        }).fail(function(jqxhr, textStatus, error) {
